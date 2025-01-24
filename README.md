@@ -6,9 +6,9 @@ This is where I will put my assignments and projects for school
 # About Me
 
 ## My Interests
-Bass guitar - I love playing music. I play a few stringed insturments, and my favorite is the bass.  
-Fishing - I love to fish as well. Coincidentally, my favorite species to target is the bass.  
-Programming - I have been trying to learn the fundamentals for over a decade, and hope to get better from these classes.  
+Bass guitar - I love playing music. I play a few stringed instruments, and my favorite is the bass.  
+Fishing - I love to fish, as well. Coincidentally, my favorite species to target is the bass.  
+Programming - I have been trying to learn the fundamentals for over a decade, and I hope to get better from these classes.  
 
 
 ## Websites I recommend
