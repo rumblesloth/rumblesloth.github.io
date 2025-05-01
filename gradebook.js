@@ -1,41 +1,38 @@
 function fetchGradeData() {
   console.log("Fetching grade data...");
-  var xhr = new XMLHttpRequest();
-  var apiRoute = "/api/grades";
+  let xhr = new XMLHttpRequest();
+  let apiRoute = "/api/grades";
 
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-      if (xhr.status === 200) {
-        populateGradebook(JSON.parse(xhr.responseText));
-      } else {
-        console.error("Could not get grades. Status:", xhr.status);
+  xhr.onreadystatechange = function(){
+    let results;
+    if (xhr.readyState === xhr.DONE){
+      if xhr.status !== 200){
+        console.error('Could not get grades. 
+          Status:, ${xhr.status}');
       }
+  populateGradebook(JSON.parse(xhr.responseText));
     }
-  };
-
-  xhr.open("GET", apiRoute, true);
+  }.bind(this);
+  xhr.open("get", apiRoute, true);
   xhr.send();
 }
 
 function populateGradebook(data) {
   console.log("Populating gradebook with data:", data);
-  const tableElm = document.getElementById("gradebook").getElementsByTagName('tbody')[0];
-
-  data.forEach(function (assignment) {
-    const row = document.createElement("tr");
-
-    const nameCell = document.createElement("td");
-    nameCell.textContent = `${assignment.last_name}, ${assignment.first_name}`;
-    row.appendChild(nameCell);
-
-    const gradeCell = document.createElement("td");
-    gradeCell.textContent = assignment.total_grade;
-    row.appendChild(gradeCell);
-
-    tableElm.appendChild(row);
-  });
+  let tableElm = document.getElementById("gradebook");
+    data.forEach(function(assignment){
+      let row = document.createElement("tr");
+      let columns = [];
+      columns.name = document.createElement('td');
+      columns.name.appendChild(
+        document.createTextNode(assignment.last_name + "," + assignment.first_name
+      );
+      columns.grade = document.createElement('td');
+      columns.grade.appendChild(
+        document.createTextNode(assignment.total_grade)
+      );
+      row.appendChild(columns.name);
+      row.appendChild(columns.grade);
+      tableElm.appendChild(row);
+    });
 }
-
-window.onload = function () {
-  fetchGradeData();
-};
