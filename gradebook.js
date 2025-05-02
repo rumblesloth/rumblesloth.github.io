@@ -6,9 +6,8 @@ function fetchGradeData() {
   xhr.onreadystatechange = function(){
     let results;
     if (xhr.readyState === xhr.DONE){
-      if xhr.status !== 200){
-        console.error('Could not get grades. 
-          Status:, ${xhr.status}');
+      if (xhr.status !== 200){
+        console.error(`Could not get grades. Status: ${xhr.status}`);
       }
   populateGradebook(JSON.parse(xhr.responseText));
     }
@@ -25,7 +24,7 @@ function populateGradebook(data) {
       let columns = [];
       columns.name = document.createElement('td');
       columns.name.appendChild(
-        document.createTextNode(assignment.last_name + "," + assignment.first_name
+        document.createTextNode(assignment.last_name + "," + assignment.first_name)
       );
       columns.grade = document.createElement('td');
       columns.grade.appendChild(
